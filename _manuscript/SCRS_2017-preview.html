@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="generator" content="quarto-1.6.33">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+    <title>Atlantic Bluefin Tuna Area Transition Matrices Estimated From Electronic Tagging and SatTagSim</title>
+    <style>
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      div.columns{display: flex; gap: min(4vw, 1.5em);}
+      div.column{flex: auto; overflow-x: auto;}
+      div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+      ul.task-list{list-style: none;}
+      ul.task-list li input[type="checkbox"] {
+        width: 0.8em;
+        margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+        vertical-align: middle;
+      }
+      /* CSS for citations */
+      div.csl-bib-body { }
+      div.csl-entry {
+        clear: both;
+        margin-bottom: 0em;
+      }
+      .hanging-indent div.csl-entry {
+        margin-left:2em;
+        text-indent:-2em;
+      }
+      div.csl-left-margin {
+        min-width:2em;
+        float:left;
+      }
+      div.csl-right-inline {
+        margin-left:2em;
+        padding-left:1em;
+      }
+      div.csl-indent {
+        margin-left: 2em;
+      }    </style>
+
+    <style>
+      body.hypothesis-enabled #quarto-embed-header {
+        padding-right: 36px;
+      }
+
+      #quarto-embed-header {
+        height: 3em;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: solid 1px;
+      }
+
+      #quarto-embed-header h6 {
+        font-size: 1.1em;
+        padding-top: 0.6em;
+        margin-left: 1em;
+        margin-right: 1em;
+        font-weight: 400;
+      }
+
+      #quarto-embed-header a.quarto-back-link,
+      #quarto-embed-header a.quarto-download-embed {
+        font-size: 0.8em;
+        margin-top: 1em;
+        margin-bottom: 1em;
+        margin-left: 1em;
+        margin-right: 1em;
+      }
+
+      .quarto-back-container {
+        padding-left: 0.5em;
+        display: flex;
+      }
+
+      .headroom {
+          will-change: transform;
+          transition: transform 200ms linear;
+      }
+
+      .headroom--pinned {
+          transform: translateY(0%);
+      }
+
+      .headroom--unpinned {
+          transform: translateY(-100%);
+      }      
+    </style>
+
+    <script>
+    window.document.addEventListener("DOMContentLoaded", function () {
+
+      var header = window.document.querySelector("#quarto-embed-header");
+      const titleBannerEl = window.document.querySelector("body > #title-block-header");
+      if (titleBannerEl) {
+        titleBannerEl.style.paddingTop = header.clientHeight + "px";
+      }
+      const contentEl = window.document.getElementById('quarto-content');
+      for (const child of contentEl.children) {
+        child.style.paddingTop = header.clientHeight + "px";
+        child.style.marginTop = "1em";
+      }
+
+      // Use the article root if the `back` call doesn't work. This isn't perfect
+      // but should typically work
+      window.quartoBackToArticle = () => {
+        var currentUrl = window.location.href;
+        window.history.back();
+        setTimeout(() => {
+            // if location was not changed in 100 ms, then there is no history back
+            if(currentUrl === window.location.href){              
+                // redirect to site root
+                window.location.href = "index.html";
+            }
+        }, 100);
+      }
+
+      const headroom = new window.Headroom(header, {
+        tolerance: 5,
+        onPin: function () {
+        },
+        onUnpin: function () {
+        },
+      });
+      headroom.init();
+    });
+    </script>
+
+    
+<script src="site_libs/manuscript-notebook/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-07ba0ad10f5680c660e360ac31d2f3b6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-545cdd561de3535e9b364c647f747893.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+     <script async="" src="https://hypothes.is/embed.js"></script>
+<script>
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    document.body.classList.add('hypothesis-enabled');
+  });
+</script>  
+      </head>
+
+  <body class="quarto-notebook">
+    <div id="quarto-embed-header" class="headroom fixed-top bg-primary">
+      
+      <a onclick="window.quartoBackToArticle(); return false;" class="btn btn-primary quarto-back-link" href=""><i class="bi bi-caret-left"></i> Back to Article</a>
+      <h6><i class="bi bi-journal-code"></i> Atlantic Bluefin Tuna Area Transition Matrices Estimated From Electronic Tagging and SatTagSim</h6>
+
+            <a href="./SCRS_2017.qmd" class="btn btn-primary quarto-download-embed" download="SCRS_2017.qmd">Download Source</a>
+          </div>
+
+     <header id="title-block-header" class="quarto-title-block default toc-left page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Atlantic Bluefin Tuna Area Transition Matrices Estimated From Electronic Tagging and SatTagSim</h1>
+          </div>
+
+    
+    <div class="quarto-title-meta-container">
+      <div class="quarto-title-meta-column-start">
+            <div class="quarto-title-meta-author">
+          <div class="quarto-title-meta-heading">Authors</div>
+          <div class="quarto-title-meta-heading">Affiliations</div>
+          
+                <div class="quarto-title-meta-contents">
+            <p class="author">Benjamin Galuardi <a href="mailto:benjamin.galuardi@noaa.gov" class="quarto-title-author-email"><i class="bi bi-envelope"></i></a> </p>
+          </div>
+                <div class="quarto-title-meta-contents">
+                    <p class="affiliation">
+                        School of Marine Science and Technology, University of Massachusetts Dartmouth, Fairhaven, MA, USA
+                      </p>
+                  </div>
+                      <div class="quarto-title-meta-contents">
+            <p class="author">Steven X. Cadrin </p>
+          </div>
+                <div class="quarto-title-meta-contents">
+                    <p class="affiliation">
+                        School of Marine Science and Technology, University of Massachusetts Dartmouth, Fairhaven, MA, USA
+                      </p>
+                  </div>
+                      <div class="quarto-title-meta-contents">
+            <p class="author">Igor Arregi </p>
+          </div>
+                <div class="quarto-title-meta-contents">
+                    <p class="affiliation">
+                        AZTI Technalia, Marine Research Division, Pasaia (Gipuzkoa), Spain
+                      </p>
+                  </div>
+                      <div class="quarto-title-meta-contents">
+            <p class="author">Haritz Arrizabalaga </p>
+          </div>
+                <div class="quarto-title-meta-contents">
+                    <p class="affiliation">
+                        AZTI Technalia, Marine Research Division, Pasaia (Gipuzkoa), Spain
+                      </p>
+                  </div>
+                      <div class="quarto-title-meta-contents">
+            <p class="author">Antonio DiNatale </p>
+          </div>
+                <div class="quarto-title-meta-contents">
+                    <p class="affiliation">
+                        ICCAT Secretariat, Madrid, Spain
+                      </p>
+                  </div>
+                      <div class="quarto-title-meta-contents">
+            <p class="author">Craig Brown </p>
+          </div>
+                <div class="quarto-title-meta-contents">
+                    <p class="affiliation">
+                        Southeast Fisheries Science Center, NOAA Fisheries, Miami, FL, USA
+                      </p>
+                  </div>
+                      <div class="quarto-title-meta-contents">
+            <p class="author">Matt Lauretta </p>
+          </div>
+                <div class="quarto-title-meta-contents">
+                    <p class="affiliation">
+                        Southeast Fisheries Science Center, NOAA Fisheries, Miami, FL, USA
+                      </p>
+                  </div>
+                      <div class="quarto-title-meta-contents">
+            <p class="author">Molly Lutcavage </p>
+          </div>
+                <div class="quarto-title-meta-contents">
+                    <p class="affiliation">
+                        Large Pelagics Research Center, Gloucester, MA, USA
+                      </p>
+                  </div>
+                    </div>
+        
+        <div class="quarto-title-meta">
+
+                      
+          
+                
+              </div>
+      </div>
+      <div class="quarto-title-meta-column-end quarto-other-formats-target">
+      </div>
+    </div>
+
+
+
+    <div class="quarto-other-links-text-target">
+    </div>  </div>
+</header><div id="quarto-content" class="page-columns page-rows-contents page-layout-article toc-left">
+<div id="quarto-sidebar-toc-left" class="sidebar toc-left">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#summary" id="toc-summary" class="nav-link active" data-scroll-target="#summary">Summary</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#methods" id="toc-methods" class="nav-link" data-scroll-target="#methods">Methods</a></li>
+  <li><a href="#results" id="toc-results" class="nav-link" data-scroll-target="#results">Results</a></li>
+  <li><a href="#discussion" id="toc-discussion" class="nav-link" data-scroll-target="#discussion">Discussion</a>
+  <ul class="collapse">
+  <li><a href="#acknowledgements" id="toc-acknowledgements" class="nav-link" data-scroll-target="#acknowledgements">Acknowledgements</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  </ul></li>
+  </ul>
+</nav>
+</div>
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+</div>
+<main class="content quarto-banner-title-block" id="quarto-document-content">      
+
+       <section id="summary" class="level1">
+<h1>Summary</h1>
+<p>We demonstrate use of a telemetry based method for simulating individual based movements to produce transition matrices for movement inclusive models. A custom R package (SatTagSim) was used on Atlantic bluefin tuna electronic tagging data from the Large Pelagics Research Center (UMass Boston), AZTI Technalia, the Grande Bluefin Year Program, and the National Marine Fisheries Service (USA) to derive transition matrices for an 11-box and 4-box model. Migration rate matrices were produced for western Atlantic tagged fish &gt;185cm, and &lt;185 cm, as well as for eastern tagged fish (all sizes). The estimates provided are fishery independent and external to the operational and assessment frameworks. The results are highly informative to the assessment by (1) providing estimates of bluefin tuna movement for consideration as fixed values, prior probabilities on movement, or for direct comparison with estimates of movement from mixed stock assessment models (2) to facilitate discussion of movement rate assumptions and the use of electronic tagging data in various assessment models.</p>
+<p>Keywords: bluefin tuna, movement, stock assessment, electronic tags,</p>
+</section>
+<section id="introduction" class="level1">
+<h1>Introduction</h1>
+<p>The benchmark assessment of Atlantic Bluefin tuna (<em>Thunnus thynnus</em>) in 2017 offers a unique opportunity to take advantage of the wealth of electronic tagging data collected in the past 20+ years. The Grande Bluefin Year Program (GBYP), a project within the International Commission for the Conservation of Atlantic Tunas (ICCAT), in particular offers a source of tagging data originating in the eastern Atlantic that was not previously available. Management strategy evaluation (MSE) is a priority for Atlantic bluefin tuna management and is currently a funded initiative within ICCAT <span class="citation" data-cites="carruthers2014">(<a href="#ref-carruthers2014" role="doc-biblioref">Carruthers and Davies 2014</a>)</span>. Development of operating models is a key component to MSE and can be a vector for utilizing electronic tag data <span class="citation" data-cites="kerr2012a kerr2016 carruthers2016">(<a href="#ref-kerr2012a" role="doc-biblioref">Kerr, Cadrin, and Secor 2012a</a>, <a href="#ref-kerr2016" role="doc-biblioref">2012b</a>; <a href="#ref-carruthers2016" role="doc-biblioref">Carruthers et al. 2016a</a>)</span></p>
+<p>There are several challenges in making these data usable in assessment activities. The first is to summarize the data in a way that is readily usable by models. Not all tagging data are equal in terms of length, area, and season of deployment. Fish are often tagged opportunistically, when and where they are accessible e.g. <span class="citation" data-cites="galuardi2012">Wilson et al. (<a href="#ref-wilson2015" role="doc-biblioref">2015</a>)</span>. Last, tagging data are expensive to collect and hold incredibly high scientific value. Allowing time for individual programs to publish results often means data are not quickly available for other purposes.</p>
+<p>The solution to many of these issues is to simplify the manner in which the data are represented, and summarize it in an easily usable format. Empirical summaries by area and season offer the simplest method for incorporating many different data sources without compromising individuals information for other purposes <span class="citation" data-cites="carruthers2016a">(<a href="#ref-carruthers2016a" role="doc-biblioref">Carruthers et al. 2016b</a>)</span>. Simple summaries do not, however, take into account the uncertainties in the positions from which they were derived and do not deal effectively with the biases of short tracks in these datasets. A more robust method is to use individual based simulation, based on the tagging data, to produce movement probability metrics by season and area <span class="citation" data-cites="galuardi2014">(<a href="#ref-galuardi2014" role="doc-biblioref">B. Galuardi et al. 2014</a>)</span>. Here, we use several electronic tagging datasets, from the eastern and western Atlantic (Figure 1), to produce seasonal movement matrices for use in current and future operational and assessment models of Atlantic bluefin tuna. We use the 11-box model developed for the GBYP MSE <span class="citation" data-cites="carruthers2016a">(<a href="#ref-carruthers2016a" role="doc-biblioref">Carruthers et al. 2016b</a>)</span> as well as a simplified 4-box model. Simulation and matrix derivations were carried out using a custom package (SatTagSim) for the R statistical software <span class="citation" data-cites="rcoreteam2024">(<a href="#ref-rcoreteam2024" role="doc-biblioref">Team 2024</a>)</span>.</p>
+</section>
+<section id="methods" class="level1">
+<h1>Methods</h1>
+<p>To generate movement probability matrices, we used methods modified and updated from <span class="citation" data-cites="galuardi2014">(<a href="#ref-galuardi2014" role="doc-biblioref">B. Galuardi et al. 2014</a>)</span>. Tagging data were available from several sources including the Large Pelagics Research Center of the University of Massachusetts Boston, AZTI Technalia, the GBYP and the NOAA Southeast Fisheries Science Center (Table 1). We used a total of 499 tagged fish ranging from 66 to over 300 cm curved fork length (CFL). These data were split into eastern and western areas releases, defined by the 45<sup>o</sup> W Longitudinal stock boundary. Western tagged fish were further split into categories &gt;= 185cm CFL (n = 189) and &lt; 185cm CFL (n = 113), for a total of three groups. The size split in the western Atlantic is consistent with the commercial size limit of the United States and represents an approximately 7-8 year old fish <span class="citation" data-cites="restrepo2010">(<a href="#ref-restrepo2010" role="doc-biblioref">Restrepo et al. 2010</a>)</span>. Fish tagged in the eastern Atlantic (n = 166) were often tagged underwater and were not measured consistently. Therefore, this group could not be reliably divided by size/age. We recognize there are several additional institutions, with substantial electronic tagging data, which were not included in this study due to availability at the time of the work. For each group of tagged fish, monthly advection parameters (u and v, mean and standard deviation) were calculated from the final estimated tracks for the group for that month. Diffusive parameters (D, mean and standard deviation) were calculated using either the diffusion parameter estimated from a Kalman filter state space model, or the fixed values used in the estimation. Fixing a diffusion parameter often occurs when using the KFtrack family of estimation models <span class="citation" data-cites="sibert2003 lam2010">(<a href="#ref-sibert2003" role="doc-biblioref">J. R. Sibert, Musyl, and Brill 2003</a>; <a href="#ref-lam2010" role="doc-biblioref">Lam, Nielsen, and Sibert 2010</a>)</span>, and is standard practice for CLS derived tracks. These parameters were used in a correlated random simulation scheme that is parameterized in terms of the advective and diffusive parameters <span class="citation" data-cites="sibert2003">B. Galuardi et al. (<a href="#ref-galuardi2014" role="doc-biblioref">2014</a>)</span>.</p>
+<p>For each group, 84 fish were ‘released’ each month (1,008/year). Starting points were determined by mapping the density of observations each month, and randomly selecting 1<sup>o</sup> grid cells in proportion to the densities. In this manner, simulations were started in all months and in all areas where observations took place, while retaining the relative importance of the observations. Each track was simulated for 720 days (~ 2 years), with daily positions being derived by sampling the parameters in the previous step, and generating steps or a correlated random walk <span class="citation" data-cites="galuardi2014">(<a href="#ref-galuardi2014" role="doc-biblioref">B. Galuardi et al. 2014</a>)</span>. A sea surface temperature climatology <span class="citation" data-cites="boyer2013">(<a href="#ref-boyer2013" role="doc-biblioref">Boyer et al. 2013</a>)</span> was used to keep simulated fish both in the water and in suitable water masses. Suitable temperature was determined by determining the 95% intervals of tag measured temperatures from the LPRC dataset for each month (Figure 2). Sea surface temperature can show considerable inter-annual variability which could affect habitat suitability for a particular year. However, since we combined tagging data from all years, a climatology was both more appropriate and more practical for the simulation framework. ETOPO1 bathymetric data <span class="citation" data-cites="amante2009">(<a href="#ref-amante2009" role="doc-biblioref">Amante and Eakins 2009</a>)</span> were combined with the World Ocean Atlas 1o surface temperatures for each month to represent habitat available for simulated fish. The bathymetry layer was modified to reduce barrier effects of Florida, the Straits of Gibraltar and through the Laurentian Channel. The tag measured temperature limits were applied to these layers for each month, and temperatures out of range were clipped. A moving time window was used as a further selection criterion so that for a given location, at least two months out of a three month window had to meet the temperature range criteria. This step was intended to keep simulated fish out of the sub-arctic water in winter and out of tropical water in the summer.</p>
+<p>Simulated fish were assigned to an area occupied each day through a geoprocessing overlay step. Both an 11-box and 4 box model were considered (Figure 3). To determine occupancy and transition, the first box occupied in each season was selected as the box occupied that season. Seasonal transition probabilities were then calculated by cross-tabulating the previous and currently assigned box for each fish for each season and dividing by the total for each row. For rows where no simulated fish occurred, a value of 1 was inserted in the diagonal position for that row (i.e.&nbsp;no movement from that area between seasons). This preserves the matrices Markovian properties where the row-wise probabilities must sum to 1.</p>
+<p>To determine the mean and variance of each transition, the described simulation was repeated 1000 times, for a total of 1,008,000 simulated fish in each group. A 95% confidence interval was approximated for each matrix cell by calculating the 2.5% and 97.5% quantiles. The simulations were done in parallel using a desktop computer with an 8-core Intel i7 3.4GHz processor. Each group run took ~18 hours to complete. In prior efforts, without the replication for variance, runs of 12,000 simulated fish took 15-20 minutes on a standard laptop running 4 cores in parallel.</p>
+</section>
+<section id="results" class="level1">
+<h1>Results</h1>
+<p>A total of six movement probability matrices were constructed for the three groups and two spatial structures (Figures 4-9). Values in each cell represent the mean and 95% confidence intervals for the 1000 runs. Cells where the confidence interval was extremely small are indicative of either very low occurrences in that season/area, or., that there were no movements to those, or a combination of these. Figures 6 and 9 demonstrates this for region 1 (the Gulf of Mexico), for fish tagged in the eastern Atlantic, and Figures 4, 5, 7 and 8 show similar results for simulations from western tagged fish in Mediterranean boxes. Parameters derived from the tagging data and used for the simulations are found in Tables 2-4.</p>
+</section>
+<section id="discussion" class="level1">
+<h1>Discussion</h1>
+<p>Spatially explicit and operational and assessment models require use of some form of movement matrix to either to assign or estimate probability of movement between areas of interest. Using a simulation framework (SatTagSim) has several advantages: 1) producing these matrices external to the modeling framework should improve computational performance by reducing the confounding between movement and mortality parameter estimates within mixed stock models 2) use of simulations, instead of empirical summaries, acts as a form of bootstrap and extends the utility of the information available 3) summarizing movement parameters across time allows the use of any spatial stratification. In the case of Atlantic Bluefin tuna, these could be across stock boundaries, spawning regions, and among fishery reporting regions. Finally, use of electronic tagging data provides fishery independent estimates of fish movements.</p>
+<p>This work is an updated version of work presented at the 2016 bluefin data preparation meeting, and follows the preliminary work in Galuardi et al.&nbsp;(2014). Several caveats should be kept in mind with respect to this method. First, the simulation method does not constrain fish to any specific area. This is a fundamentally different decision than what was used in MAST model <span class="citation" data-cites="taylor2011">(<a href="#ref-taylor2011" role="doc-biblioref">Taylor et al. 2011</a>)</span>, where fish in certain regions were not allowed to transit to other regions (e.g.&nbsp;the Gulf of St.&nbsp;Lawrence to the Mediterranean). SatTagSim only constrains movement according to the movement parameters derived from tagging data and subsequent track estimation. This has the advantage of freely allowing for stochasticity in the simulation according to the data. Second, the temperature constraints are biologically reasonable but are somewhat subjective in application. SatTagSim allows the user to specify, within the moving time window, the number of suitable months for surface temperature (1 – 3 months). This was included in the method to keep fish out of areas that are typically beyond their thermal range, but can also act as a barrier if, for example, the temperature climatology changes quickly from one month to the next. The level of temporal detail in the World Ocean Atlas allows only for a monthly time step. A more continuous climatology may be worth consideration.</p>
+<p>The most useful consideration in using tagging within a mixed stock assessment is knowledge of the stock of origin of the tagged fish. Determining stock of origin from tagging data is not easily accomplished since many assumptions must be made about spawning site fidelity, spawning frequency, maturity, condition, spawning area, etc. Furthermore, the prevalence of short tracks (Figure 10) disallows many of these tracks from consideration since they were not at liberty long enough even to apply these assumptions. Therefore, we did not make assumptions of stock origin in this work and classified fish based only according to where they were tagged. Given current knowledge of mixing rates from otolith work <span class="citation" data-cites="rooker2014 siskey2016">(<em>e.g.</em>, <a href="#ref-rooker2014" role="doc-biblioref">Rooker et al. 2014</a>; <a href="#ref-siskey2016" role="doc-biblioref">Siskey et al. 2016</a>)</span>, it is reasonable to assume a majority of our fish tagged originated from the stock primarily associated with the tagging region. A detailed breakdown of size, location and season of tagged fish would be necessary to have a better understanding of possible stock origin of tagged fish.</p>
+<p>Future work should include simulations and movement matrices using only fish that visited a known spawning area. The simplest version of this could be assigning western stock origin to tagged fish that visited the Gulf of Mexico and eastern origins to fish that visited, or were tagged in, the Mediterranean. Recent work highlighting the prevalence of spawning in the Slope Sea in the western Atlantic <span class="citation" data-cites="richardson2016">(<a href="#ref-richardson2016" role="doc-biblioref">Richardson et al. 2016</a>)</span> could add additional complexity and stock assignment but, currently, there is not a consensus to which stock Slope Sea spawners should be assigned, or how this information may affect our understanding of stock structure <span class="citation" data-cites="walter2016">(<a href="#ref-walter2016" role="doc-biblioref">Walter et al. 2016</a>)</span>. These results also suggest possible alternate spatial configurations, such as moving the split between areas 8 and 9 (Eastern Atlantic areas) to the Straits of Gibraltar.</p>
+<p>Summarizing electronic tagging data movement parameters based on area of tagging is not analogous to stock assignment, but it does have the effect of functionally including movement patterns from a minority occurring stock within the majority stock within the variability of those parameters. For example, in our approach, western tagged fish behave similarly. Eastern origin fish that travel to the Med represent increased variability in the parameter estimates for months they are in the eastern Atlantic and Mediterranean. The number of Western tagged fish that crossed the 45<sup>o</sup> W line is low: 9/189 for fish &gt;=185cm (4.8%), 5/113 for fish &lt; 185 cm (4.4%).</p>
+<p>An interesting and valuable exercise would be to approach the parameter summarization as described above, and assign a probability of switching parameter sets when moving into areas and during seasons where mixing is more likely to occur. This would have the biological effect of schools mixing and fish taking on the movement characteristics of other fish. This probability could be informed by the matrices reported here as well as from biological sampling <span class="citation" data-cites="rooker2014 graves2015 siskey2016">(<em>e.g.,</em> <a href="#ref-rooker2014" role="doc-biblioref">Rooker et al. 2014</a>; <a href="#ref-graves2015" role="doc-biblioref">Graves et al. 2015</a>; <a href="#ref-siskey2016" role="doc-biblioref">Siskey et al. 2016</a>)</span></p>
+<p>Atlantic bluefin tuna are currently assessed using the VPA 2-box method <span class="citation" data-cites="porch2003">(<a href="#ref-porch2003" role="doc-biblioref">Porch 2003</a>)</span>, which is usually applied separately to the eastern and western stocks (ICCAT, 2014). The current benchmark assessment affords the opportunity to apply this method with mixing, and to compare results against other movement inclusive methods. One essential question as to the nature of the mixing between the two stocks is whether the two stocks represent an overlap model, where fish return to natal spawning grounds without deviation, or a diffusive model where fish, typically from the larger stock (eastern) more or less permanently emigrate and take on the characteristics of the western stock. The current application of SatTagSim more closely represents a diffusive method, but it could easily be extended to examine other scenarios.</p>
+<p>Finally, future work may include use of additional tagging datasets to produce a more complete picture of telemetry based movement. These could include those from Stanford University, the Department of Fisheries and Oceans (Canada), The University of Cadiz <span class="citation" data-cites="abascal2016 aranda2013">(<a href="#ref-abascal2016" role="doc-biblioref">Abascal et al. 2016</a>; <a href="#ref-aranda2013" role="doc-biblioref">Aranda et al. 2013</a>)</span>, and Ifremer <span class="citation" data-cites="fromentin2013">(<a href="#ref-fromentin2013" role="doc-biblioref">Fromentin and Lopuszanski 2013</a>)</span>. Increased data will refine these simulations by providing a more robust analysis of bluefin migrations.</p>
+<section id="acknowledgements" class="level2">
+<h2 class="anchored" data-anchor-id="acknowledgements">Acknowledgements</h2>
+<p>We thank Dr.&nbsp;Tim Miller of the Northeast Fisheries Science Center, Dr.&nbsp;Lisa Kerr of the Gulf of Maine Research Institute, Dr.&nbsp;Geoff Cowles of the University of Massachusetts Dartmouth, and Dr.&nbsp;Chi Hin (Tim) Lam of University of Massachusetts, Boston, for valuable feedback, technical assistance and inspiration. This work was possible due to the NOAA/Seagrant Population Dynamics Fellowship (NA11OAR4170184) to B. Galuardi and a Bluefin Tuna Research Program grant (NA13NMF4720061) to M. Lutcavage. Special thanks to GBYP and tagging partners for tagging data: Fundacion AZTI, Instituto Espanol de Oceanografia, INRH, IZOR, COMBIOMA, Istanbul University, Universitat Politecnica de Valencia, Kali Tuna (Croatia) and the World Wildlife Fund.</p>
+<p>This work was carried out under the provision of the ICCAT Atlantic Wide Research Programme for Bluefin Tuna (GBYP), funded by the European Union, by several ICCAT CPCs, the ICCAT Secretariat and by other entities (see: http://www.iccat.int/GBYP/en/Budget.htm). The contents of this paper do not necessarily reflect the point of view of ICCAT or of the other funders, which have not responsibility about them, neither do they necessarily reflect the views of the funders and in no ways anticipate the Commission’s future policy in this area.  </p>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-abascal2016" class="csl-entry" role="listitem">
+Abascal, Francisco J., Antonio Medina, José M. De La Serna, Dolores Godoy, and Guillermo Aranda. 2016. <span>“Tracking Bluefin Tuna Reproductive Migration into the Mediterranean Sea with Electronic Pop-up Satellite Archival Tags Using Two Tagging Procedures.”</span> <em>Fisheries Oceanography</em> 25 (1): 54–66. <a href="https://doi.org/10.1111/fog.12134">https://doi.org/10.1111/fog.12134</a>.
+</div>
+<div id="ref-amante2009" class="csl-entry" role="listitem">
+Amante, C., and B. W. Eakins. 2009. <span>“ETOPO1 1 Arc-Minute Global Relief Model: Procedures, Data Sources and Analysis.”</span> <em>NOAA Technical Memorandum NESDIS NGDC-24</em>, 19–pp.
+</div>
+<div id="ref-aranda2013" class="csl-entry" role="listitem">
+Aranda, Guillermo, Francisco Javier Abascal, José Luis Varela, and Antonio Medina. 2013. <span>“Spawning Behaviour and Post-Spawning Migration Patterns of Atlantic Bluefin Tuna (Thunnus Thynnus) Ascertained from Satellite Archival Tags.”</span> <em>PLoS ONE</em> 8 (10). <a href="https://doi.org/10.1371/journal.pone.0076445">https://doi.org/10.1371/journal.pone.0076445</a>.
+</div>
+<div id="ref-boyer2013" class="csl-entry" role="listitem">
+Boyer, Timothy P., John I. Antonov, Olga K. Baranova, Hernan E. Garcia, Daphne R. Johnson, Alexey V. Mishonov, Todd D. O’Brien, et al. 2013. <span>“World Ocean Database 2013.”</span> <a href="https://doi.org/10.7289/V5NZ85MT">https://doi.org/10.7289/V5NZ85MT</a>.
+</div>
+<div id="ref-carruthers2014" class="csl-entry" role="listitem">
+Carruthers, Tom, and Campbell Davies. 2014. <span>“Evaluating Management Strategies for Atlantic Bluefin Tuna.”</span> <a href="http://www.iccat.int/GBYP/Documents/MODELLING/PHASE%205/MODELLING_PHASE5_CARRUTHERS_REPORT_1.pdf">http://www.iccat.int/GBYP/Documents/MODELLING/PHASE%205/MODELLING_PHASE5_CARRUTHERS_REPORT_1.pdf</a>.
+</div>
+<div id="ref-carruthers2016" class="csl-entry" role="listitem">
+Carruthers, Tom, Ai Kimoto, Joseph E. Powers, Laurence Kell, Doug S. Butterworth, Matthew V. Lauretta, and Toshihide Kitakado. 2016a. <span>“Structure and Estimation Framework for Atlantic Bluefin Tuna Operating Models.”</span> <em>Collect. Vol. Sci. Pap. ICCAT</em> 72 (7): 17821795. <a href="https://www.iccat.int/Documents/CVSP/CV072_2016/n_7/CV07201782.pdf">https://www.iccat.int/Documents/CVSP/CV072_2016/n_7/CV07201782.pdf</a>.
+</div>
+<div id="ref-carruthers2016a" class="csl-entry" role="listitem">
+———. 2016b. <span>“Structure and Estimation Framework for Atlantic Bluefin Tuna Operating Models.”</span> <em>Collect. Vol. Sci. Pap. ICCAT</em> 72 (7): 17821795. <a href="https://www.iccat.int/Documents/CVSP/CV072_2016/n_7/CV07201782.pdf">https://www.iccat.int/Documents/CVSP/CV072_2016/n_7/CV07201782.pdf</a>.
+</div>
+<div id="ref-cermeño2015" class="csl-entry" role="listitem">
+Cermeño, Pablo, Gemma Quílez-Badia, Andrés Ospina-Alvarez, Susana Sainz-Trápaga, Andre M. Boustany, Andy C. Seitz, Sergi Tudela, and Barbara A. Block. 2015. <span>“Electronic Tagging of Atlantic Bluefin Tuna (Thunnus Thynnus, l.) Reveals Habitat Use and Behaviors in the Mediterranean Sea.”</span> <em>PLoS ONE</em> 10 (2). <a href="https://doi.org/10.1371/journal.pone.0116638">https://doi.org/10.1371/journal.pone.0116638</a>.
+</div>
+<div id="ref-fromentin2013" class="csl-entry" role="listitem">
+Fromentin, Jean-Marc, and Daniel Lopuszanski. 2013. <span>“Migration, Residency, and Homing of Bluefin Tuna in the Western Mediterranean Sea.”</span> <em>ICES Journal of Marine Science: Journal Du Conseil</em>, October. <a href="https://doi.org/10.1093/icesjms/fst157">https://doi.org/10.1093/icesjms/fst157</a>.
+</div>
+<div id="ref-galuardi2014" class="csl-entry" role="listitem">
+Galuardi, B., S. X. Cadrin, L. Kerr, T. J. Miller, and M. Lutcavage. 2014. <span>“Using Electronic Tag Data to Provide Transition Matrices for Movement Inclusive Population Models.”</span> <em>ICCAT Collective Volume of Scientific Papers</em> 71 (4): 1746–56.
+</div>
+<div id="ref-galuardi2012" class="csl-entry" role="listitem">
+Galuardi, Benjamin, and Molly Lutcavage. 2012. <span>“Dispersal Routes and Habitat Utilization of Juvenile Atlantic Bluefin Tuna, Thunnus Thynnus, Tracked with Mini PSAT and Archival Tags.”</span> <em>PLoS ONE</em> 7 (5). <a href="https://doi.org/10.1371/journal.pone.0037829">https://doi.org/10.1371/journal.pone.0037829</a>.
+</div>
+<div id="ref-graves2015" class="csl-entry" role="listitem">
+Graves, John E., Andrew S. Wozniak, Rebecca M. Dickhut, Michele A. Cochran, Elizabeth H. MacDonald, Elizabeth Bush, Haritz Arrizabalaga, Nicolas Goñi, and Deborah MacLatchey. 2015. <span>“Transatlantic Movements of Juvenile Atlantic Bluefin Tuna Inferred from Analyses of Organochlorine Tracers.”</span> <em>Canadian Journal of Fisheries and Aquatic Sciences</em>, January, 1–9. <a href="https://doi.org/10.1139/cjfas-2014-0305">https://doi.org/10.1139/cjfas-2014-0305</a>.
+</div>
+<div id="ref-kerr2016" class="csl-entry" role="listitem">
+Kerr, Lisa A., Steven X. Cadrin, and David H. Secor. 2012b. <span>“Evaluating Population Effects and Management Implications of Mixing Between Eastern and Western Atlantic Bluefin Tuna Stocks.”</span> <em>ICES CM</em>, no. 13. <a href="http://www.ices.dk/sites/pub/CM%20Doccuments/CM-2012/N/N1312.pdf">http://www.ices.dk/sites/pub/CM%20Doccuments/CM-2012/N/N1312.pdf</a>.
+</div>
+<div id="ref-kerr2012a" class="csl-entry" role="listitem">
+———. 2012a. <span>“Evaluating Population Effects and Management Implications of Mixing Between Eastern and Western Atlantic Bluefin Tuna Stocks.”</span> <em>ICES CM</em>, no. 13. <a href="http://www.ices.dk/sites/pub/CM%20Doccuments/CM-2012/N/N1312.pdf">http://www.ices.dk/sites/pub/CM%20Doccuments/CM-2012/N/N1312.pdf</a>.
+</div>
+<div id="ref-lam2010" class="csl-entry" role="listitem">
+Lam, Chi H., Anders Nielsen, and John R. Sibert. 2010. <span>“Incorporating Sea-Surface Temperature to the Light-Based Geolocation Model TrackIt.”</span> <em>Marine Ecology Progress Series</em> 419 (November): 71–84. <a href="https://doi.org/10.3354/meps08862">https://doi.org/10.3354/meps08862</a>.
+</div>
+<div id="ref-porch2003" class="csl-entry" role="listitem">
+Porch, C. E. 2003. <em>VPA-2BOX Version 3.01 User<span>’</span>s Guide. NOAA Sustainable Fisheries Division Contribution SFD/2003-2004</em>. Miami: F. L.
+</div>
+<div id="ref-restrepo2010" class="csl-entry" role="listitem">
+Restrepo, V. R., G. A. Diaz, J. F. Walter, J. Neilson, S. E. Campana, and D. Secor. 2010. <span>“Updated Estimate of the Growth Curve of Western Atlantic Bluefin Tuna.”</span> <em>Coll. Vol. Sci. Pap.</em> SCRS/2009/160: 1–12.
+</div>
+<div id="ref-richardson2016" class="csl-entry" role="listitem">
+Richardson, David E., Katrin E. Marancik, Jeffrey R. Guyon, Molly E. Lutcavage, Benjamin Galuardi, Chi Hin Lam, Harvey J. Walsh, Sharon Wildes, Douglas A. Yates, and Jonathan A. Hare. 2016. <span>“Discovery of a Spawning Ground Reveals Diverse Migration Strategies in Atlantic Bluefin Tuna (Thunnus Thynnus).”</span> <em>Proceedings of the National Academy of Sciences</em> 113 (12): 3299–3304. <a href="https://doi.org/10.1073/pnas.1525636113">https://doi.org/10.1073/pnas.1525636113</a>.
+</div>
+<div id="ref-rooker2014" class="csl-entry" role="listitem">
+Rooker, J. R., H. Arrizabalaga, I. Fraile, D. H. Secor, D. L. Dettman, N. Abid, and P. Addis. 2014. <span>“Crossing the Line: Migratory and Homing Behaviors of Atlantic Bluefin Tuna.”</span> <em>Marine Ecology Progress Series</em> 504: 265–76.
+</div>
+<div id="ref-sibert2003" class="csl-entry" role="listitem">
+Sibert, J. R, M. K Musyl, and R. W Brill. 2003. <span>“Horizontal Movements of Bigeye Tuna Near Hawaii from Archival Tagging Data.”</span> <em>Fisheries Oceanography</em> 12: 141–51.
+</div>
+<div id="ref-sibert2006" class="csl-entry" role="listitem">
+Sibert, John R, Molly E Lutcavage, Anders Nielsen, Richard W Brill, and Steven G Wilson. 2006. <span>“Interannual Variation in Large-Scale Movement of Atlantic Bluefin Tuna (Thunnus Thynnus) Determined from Pop-up Satellite Archival Tags.”</span> <em>Canadian Journal of Fisheries and Aquatic Sciences</em> 63 (10): 2154–66. <a href="https://doi.org/10.1139/f06-114">https://doi.org/10.1139/f06-114</a>.
+</div>
+<div id="ref-siskey2016" class="csl-entry" role="listitem">
+Siskey, M. R., M. J. Wilberg, R. J. Allman, B. K. Barnett, and D. H. Secor. 2016. <span>“Forty Years of Fishing: Changes in Age Structure and Stock Mixing in Northwestern Atlantic Bluefin Tuna (Thunnus Thynnus) Associated with the Size-Selective and Long-Term Exploitation.”</span> <em>ICES Journal of Marine Science</em> 73 (10): 2518–28.
+</div>
+<div id="ref-taylor2011" class="csl-entry" role="listitem">
+Taylor, Nathan G., Murdoch K. McAllister, Gareth L. Lawson, Tom Carruthers, and Barbara A. Block. 2011. <span>“Atlantic Bluefin Tuna: A Novel Multistock Spatial Model for Assessing Population Biomass.”</span> <em>PLOS ONE</em> 6 (12): e27693. <a href="https://doi.org/10.1371/journal.pone.0027693">https://doi.org/10.1371/journal.pone.0027693</a>.
+</div>
+<div id="ref-rcoreteam2024" class="csl-entry" role="listitem">
+Team, R Core. 2024. <em>R: A Language and Environment for Statistical Computing</em>. Vienna, Austria: R Foundation for Statistical Computing. <a href="http://www.R-project.org">http://www.R-project.org</a>.
+</div>
+<div id="ref-walter2016" class="csl-entry" role="listitem">
+Walter, John F., Clay E. Porch, Matt V. Lauretta, Shannon L. Cass-Calay, and Craig A. Brown. 2016. <span>“Implications of Alternative Spawning for Bluefin Tuna Remain Unclear.”</span> <em>Proceedings of the National Academy of Sciences</em>, 201605962. <a href="http://www.pnas.org/content/early/2016/07/18/1605962113.short">http://www.pnas.org/content/early/2016/07/18/1605962113.short</a>.
+</div>
+<div id="ref-wilson2015" class="csl-entry" role="listitem">
+Wilson, Steven G, Ian D Jonsen, Robert J Schallert, James E Ganong, Michael R Castleton, Aaron D Spares, Andre M. Boustany, Michael J. W. Stokesbury, and Barbara A. Block. 2015. <span>“Tracking the Fidelity of Atlantic Bluefin Tuna Released in Canadian Waters to the Gulf of Mexico Spawning Grounds.”</span> <em>Canadian Journal of Fisheries and Aquatic Sciences</em>, September. <a href="https://doi.org/10.1139/cjfas-2015-0110">https://doi.org/10.1139/cjfas-2015-0110</a>.
+</div>
+</div>
+<p>  Table 1. Datasets used in simulations.</p>
+<p>Owner Primary Area of release Size at release Number of tags Years tagged Principal Investigator LPRC/UMass Boston Canadian Maritimes, Gulf of Maine 75-300 cm 302 1997-2014 Molly Lutcavage NOAA, SEFSC Gulf of Mexico 190-270 cm 31 2010-2012 Craig Brown AZTI Bay of Biscay 66-110 cm 20 2005-2010 Igor Arregi/Haritz Arrizabalaga GBYP Multiple; Eastern Atlantic and Med 56-265 cm 146 2011-2015 Antonio Di Natale Total Western 333<br>
+Total Eastern 166<br>
+Grand Total 499</p>
+<p>Table 2. Parameters derived from 189 western tagged Atlantic bluefin &gt;= 185 cm CFL. Advective terms are u and v while D indicates diffusion. The ‘sd’ prefix indicates standard deviation. Units are nautical miles/day (nmd-1) for u, v, sd.u, sd.v, and nautical miles squared per day (nm2d-1) for D and sd.D.</p>
+<p>Month u v D sd.u sd.v sd.D 1 2.14 -2.04 1221.28 12.30 8.07 1253.39 2 -1.24 -1.69 1304.15 18.18 7.93 1300.40 3 -2.27 0.61 1405.27 16.04 11.71 1337.40 4 2.03 5.70 1284.55 16.73 10.32 1299.74 5 9.26 1.07 1282.14 16.32 10.08 1386.94 6 13.60 17.15 1388.65 21.19 17.73 1470.72 7 1.23 4.27 1253.62 14.63 13.26 1449.20 8 0.57 -0.62 1053.34 4.55 5.36 1365.82 9 0.88 -0.22 1062.58 4.75 9.36 1315.52 10 -2.99 -7.69 1081.05 10.01 11.06 1178.61 11 -8.16 -9.05 1076.06 10.19 9.39 1135.88 12 -1.95 -2.10 1128.35 9.33 6.71 1165.03</p>
+<p>  Table 3. Parameters derived from 113 western tagged Atlantic bluefin &lt; 185cm CFL. Terms and units follow those in Table 2.</p>
+<p>Month u v D sd.u sd.v sd.D<br>
+1 1.39 -1.92 961.81 10.96 8.38 1056.34 2 0.40 -0.88 945.05 13.18 6.28 1064.86 3 0.24 -0.14 955.22 12.75 9.40 1061.66 4 1.18 5.58 923.52 13.24 8.91 1043.36 5 0.76 2.37 943.17 11.61 6.38 1152.37 6 1.32 3.32 1085.69 15.72 10.75 1288.33 7 -0.32 1.22 981.51 10.74 7.47 1193.80 8 0.33 -0.53 848.29 3.42 4.76 1143.32 9 0.32 -1.08 903.56 4.44 6.53 1067.70 10 -2.42 -5.62 937.12 7.88 9.36 1000.87 11 -5.91 -7.21 947.13 10.26 10.01 997.11<br>
+12 -1.19 -2.83 936.52 7.97 7.75 992.68</p>
+<p>Table 4. Parameters derived from 166 eastern tagged Atlantic bluefin. Terms and units follow those in Table 2.</p>
+<p>Month u v D sd.u sd.v sd.D 1 -0.89 -1.23 946.54 10.34 4.98 718.32 2 -1.23 -0.21 845.77 6.77 4.18 574.34 3 -0.77 -0.82 790.73 4.75 2.88 345.45 4 0.53 0.76 790.98 4.34 2.03 352.88 5 6.44 1.54 970.84 25.05 7.89 493.53 6 4.48 0.91 879.66 19.11 7.15 478.84 7 -8.81 4.01 915.88 15.46 11.16 514.00 8 -0.88 3.12 1010.16 5.17 8.06 572.07 9 -1.77 1.49 1017.43 6.88 8.07 757.13 10 0.17 -0.29 1027.69 7.05 6.01 724.73 11 -1.45 0.11 1037.25 5.69 4.07 699.24 12 -0.69 -0.71 1018.30 6.28 6.90 704.73</p>
+<p>Figure 1. Electronic tagging data used in the analysis. Large Pelagics Research Center (LPRC) included fish both &gt;=185cm and &lt; 185cm and included both immature and mature individuals. The NOAA data were all mature fish, &gt;=185cm. AZTI data were mostly immature fish (Arregi at al., in prep). GBYP likely had a mix of mature and immature fish.</p>
+<p>Figure 2. Cumulative distributions of tag measured temperatures from the LPRC electronic tagging data (n = 341 fish). Plots show the percentage of observations (y-axis) that fell with each temperature (x-axis). The mean (red line) and 95% quantiles (blue lines) are displayed for reference. The temperature range used for the simulations is less stringent than these observations to account for unobserved variance.</p>
+<p>Figure 3. Two spatial stratification schemes considered for movement transitions. The 4-box model is an aggregated subset of the 11-box model. The 4-box model was adjusted slightly so that the western boundary did not cross into the Pacific Ocean.</p>
+<p>Figure 4. Western tagged fish &gt;= 185 cm CFL, 4 box model. In each cell, the first line represents the mean transition probability from the previous season to the current season. The colorbar represents the mean as a visual aid. The second line in each cell is the 95% confidence interval of the 1000 replicate runs. Figures 5-9 are labeled in this manner.  </p>
+<p>Figure 5. Western tagged fish &lt; 185 cm CFL, 4 box model.  </p>
+<p>Figure 6. Eastern tagged fish, 4 box model.</p>
+<p>Figure 7. Western tagged fish &gt;= 185 cm CFL, 11 box model</p>
+<p>Figure 8. Western tagged fish &lt; 185 cm CFL, 11 box model.</p>
+<p>Figure 9. Eastern tagged fish, 11 box model.  </p>
+<p>Figure 10. Histogram of days at liberty for the combined NOAA and LPRC datasets (n = 333). This highlights the prevalence of relatively short tagging durations.</p>
+</section>
+</section>
+     </main>
+<!-- /main column -->  <script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>  </div> <!-- /content --> 
+  
+</body></html>
