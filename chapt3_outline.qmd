@@ -61,27 +61,35 @@ The solution to many of these issues is to simplify the manner in which the data
 
 # intro to SCRS 2014 paper
 
-Atlantic bluefin tuna are managed as separate eastern and western stocks (ICCAT 2012), but tagging data, genetic, stable isotope and chemical tracer studies suggest that potentially significant mixing exists between these stocks. Failing to account for this mixing could lead to a biased view of stock status and have significant ramifications on the management of the species.
+Atlantic bluefin tuna are managed as separate eastern and western stocks (ICCAT 2022), but tagging data, genetic, stable isotope and chemical tracer studies suggest that potentially significant mixing exists between these stocks (CITE a bunch of papers here..). Failing to account for this mixing could lead to a biased view of stock status and have significant ramifications on the management of the species.
 
-Modeling efforts by managers and researchers have attempted to account for mixing in various ways. Porch (2003) developed the 2-box VPA model, which allows for movement between stocks, and is the current model used by ICCAT to assess the two stocks. The most recent assessment did not, however, include mixing as an input (ICCAT 2012). A fully integrated, multi-stock statistical catch at age model (MAST) was developed by Taylor et al. (2011) and was built to include conventional and electronic tagging data as well as isotopically assigned natal origin information. The model had convergence issues and difficulty estimating confounded movement parameters, but highlighted areas in which assessment of bluefin tuna (and other species) could be improved.
+Modeling efforts by managers and researchers have attempted to account for mixing in various ways. Porch (2003) developed the 2-box VPA model, which allows for movement between stocks, and is the current model used by ICCAT to assess the two stocks. The most recent assessment did not, however, include mixing as an input (ICCAT 2022). A fully integrated, multi-stock statistical catch at age model (MAST) was developed by Taylor et al. (2011) and was built to include conventional and electronic tagging data as well as isotopically assigned natal origin information. The model had convergence issues and difficulty estimating confounded movement parameters, but highlighted areas in which assessment of bluefin tuna (and other species) could be improved.
 
-Management strategy evaluation (MSE) is a priority for Atlantic bluefin tuna management within ICCAT (ICCAT Workshop on Stock Assessment Methods, July, 2014) and a key component towards this is incorporation of an operational model. Kerr et al. (2012) developed an operational model, based on the MAST framework, that simulates spawning stock biomass in a spatially explicit fashion under differing assumptions of fishing mortality and other parameters. Movement parameterization was in the form of Markovian state transition matrices where portions of the population moved seasonally between a set of areas (states). Kerr at al.’s (2012) model used movements estimated from MAST, using both bulk transfer and gravity based estimates as alternative operating models for simulation.  Each of these estimation methods has drawbacks: Bulk transfer, in which all off-diagonal matrix cells (i.e., transfer coefficients from one area to another) are estimated, made convergence difficult for MAST while the gravity method, in which an ‘attraction’ coefficient is estimated for each area to derive residence, and movement is derived from relative attraction of other areas in that season, is not realistic.    
+Management strategy evaluation (MSE) was pursued by as a management priority for Atlantic bluefin tuna (ICCAT Workshop on Stock Assessment Methods, July, 2014, Carruthers many refs.., Cadrin, Morse, Kerr). A key component of MSE is use of an operational model.
 
-Empirical information from tagging studies has often been cited as being useful towards stock assessment, and the efforts to date have been split among two camps: Those that seek to use electronic tag data for mortality and/or movement estimation (Miller and Andersen 2008, Eveson et al. 2012, Whitlock et al. 2012) and those designed to scale individual movements to population levels (Sibert et al. 1999, 2006, Sibert and Fournier 2001). In particular, Sibert (2006) showed that advection diffusion population simulations, based on the movement of groups of tagged individuals, may be used to compare distribution in different time periods.
+Kerr et al. (2012) developed an operational model, based on the MAST framework, that simulates spawning stock biomass in a spatially explicit fashion under differing assumptions of fishing mortality and other parameters.
 
-We developed a telemetry based simulation method to parameterize movement in a biologically realistic manner, and to alleviate estimating problems encountered using MAST or the potential biases involved in estimating movement from fishery recaptures of conventional tags. We draw upon a large database of movement information from electronically tagged Atlantic bluefin tuna and introduce a framework which may be used to examine mixing between eastern and western Atlantic bluefin tuna stocks, be input directly into operational and spatially explicit assessment models, and be broadly applicable to other electronic tagging studies and spatial strata.
+Movement parameterization was in the form of Markovian state transition matrices where portions of the population moved seasonally between a set of areas (states).
+
+Kerr at al.’s (2012) model used movements estimated from MAST, using both bulk transfer and gravity based estimates as alternative operating models for simulation. 
+
+Each of these estimation methods has drawbacks: Bulk transfer, in which all off-diagonal matrix cells (i.e., transfer coefficients from one area to another) are estimated, made convergence difficult for MAST while the gravity method, in which an ‘attraction’ coefficient is estimated for each area to derive residence, and movement is derived from relative attraction of other areas in that season, is not realistic.    
+
+### add this to chapter 2 if it fits..
+
+> Empirical information from tagging studies has often been cited as being useful towards stock assessment, and the efforts to date have been split among two camps: Those that seek to use electronic tag data for mortality and/or movement estimation (Miller and Andersen 2008, Eveson et al. 2012, Whitlock et al. 2012) and those designed to scale individual movements to population levels (Sibert et al. 1999, 2006, Sibert and Fournier 2001). In particular, Sibert (2006) showed that advection diffusion population simulations, based on the movement of groups of tagged individuals, may be used to compare distribution in different time periods.
+>
+> We developed a telemetry based simulation method to parameterize movement in a biologically realistic manner, and to alleviate estimating problems encountered using MAST or the potential biases involved in estimating movement from fishery recaptures of conventional tags. We draw upon a large database of movement information from electronically tagged Atlantic bluefin tuna and introduce a framework which may be used to examine mixing between eastern and western Atlantic bluefin tuna stocks, be input directly into operational and spatially explicit assessment models, and be broadly applicable to other electronic tagging studies and spatial strata.
 
 ## elements/sections
 
-Di Natale, Antonio
-Director, Aquastudio Research Institute, Via Trapani 6, 98121 Messina, Italy
-Tel: +39 336 333 366, E-Mail: adinatale\@costaedutainment.it; adinatale\@acquariodigenova.it
+Di Natale, Antonio Director, Aquastudio Research Institute, Via Trapani 6, 98121 Messina, Italy Tel: +39 336 333 366, E-Mail: adinatale\@costaedutainment.it; adinatale\@acquariodigenova.it
 
 The best idea is to make the AFS 2017 talk into a chapter. It has all the elements it just need text. Basic textr can be used from the SCRS 2017 paper but the matrices, pieces, and interpretations are beyond what that paper offered.
 
 -   Was mixing considered in the most recent assessment? It does not appear so..
 
-    -   VPA used and SS3 adopted?
+    -   VPA used and [SS3 adopted]{.underline}
 
     -   ASAP model considered? SCRS paper
 
@@ -97,26 +105,52 @@ The best idea is to make the AFS 2017 talk into a chapter. It has all the elemen
 
     -   SRCS 2017 499 fish
 
-        -   189 (\>185 CFL, west)
-
         -   113 (\<185 CFL, west)
+
+        -   189 (\>185 CFL, west)
 
         -   166 (Eastern tagged fish)
 
     -   AFS: 170 east, 220 west E/W size split?
 
-        -   how many sims were done?
+        -   West fish were large ones only and had \>=21 days/track
+
+        -   Looks like 245 large fish were used for AFS... PPT says 220 but dataset shows 245
+
+            -   190-301 cm CFL
+
+            -   LPRC: 7 archival, 149 MTI, 33 WC
+
+            -   DAL 23-655
+
+            -   2002-2016
+
+        -   East fish had a few added between SCRS and AFS
 
         -   how was variance derived?
 
+            -   use lots of sims where nreps is a run; do median and compute 95% quantiles (2.5-97.5)
+
         -   what was left out between SCRS and AFS?? smaller fish?
 
-```{=html}
 <!-- -->
-```
+
 -   Add E/W combination
 
-    -   demonstrates sharing of movement parameters in the case of mixing
+    -   AFS: 170 east, 220 west E/W size split
+
+        -   I did this previoslyl but didn't use the results for anything.
+
+            -   120,000 simulated fish, 4 positions/month, two year tracks
+
+            -   1200 fish, 100 reps. Each rep has different starting points
+
+            -   shared parameters between east and west fish, simply combine all tracks and generate movement parameters as a single set. Western regions will be more heavily influenced by western tagged fish and vice versa, but since each groups has some crossover, there is sharing of movement information
+
+            -   
+
+                -   demonstrates sharing of movement parameters in the case of mixing
+                -   takes 5.5 minutes on lenovo laptop (Ryzen7).. probably way faster on server..
 
 -   use $\chi^2$ goodness of fit to compare transitions between small/large fish
 
